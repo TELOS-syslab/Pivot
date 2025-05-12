@@ -134,10 +134,12 @@ def config_cache(options, system):
                                     **_get_cache_opts('l3c', options))
                 system.llc0.cpu_side = system.tollcbus.mem_side_ports
                 system.llc0.mem_side = system.membus.cpu_side_ports
+                system.llc0.tag_latency = int(system.llc0.tag_latency)
                 system.llc1 = l3_cache_class(
                                     **_get_cache_opts('l3b', options))
                 system.llc1.cpu_side = system.tollcbus.mem_side_ports
                 system.llc1.mem_side = system.membus.cpu_side_ports
+                system.llc1.tag_latency = int(system.llc1.tag_latency)
                 Test_mode = getattr(options, 'test_mode')
                 if (Test_mode == 'MBA'):
                     MBACtrl = getattr(options, 'MBACtrl')
